@@ -463,15 +463,17 @@ continueUserActivity:(NSUserActivity *)userActivity
     NSString *handle;
     BOOL isAudioCall;
     BOOL isVideoCall;
-    // iOS 13 returns an INStartCallIntent userActivity type
-    if (@available(iOS 13, *)) {
-        INStartCallIntent *intent = (INStartCallIntent*)interaction.intent;
-        isAudioCall = intent.callCapability == INCallCapabilityAudioCall;
-        isVideoCall = intent.callCapability == INCallCapabilityVideoCall;
-    } else {
-        isAudioCall = [userActivity.activityType isEqualToString:INStartAudioCallIntentIdentifier];
-        isVideoCall = [userActivity.activityType isEqualToString:INStartVideoCallIntentIdentifier];
-    }
+//    // iOS 13 returns an INStartCallIntent userActivity type
+//    if (@available(iOS 13, *)) {
+////        INStartCallIntent *intent = (INStartCallIntent*)interaction.intent;
+////        isAudioCall = intent.callCapability == INCallCapabilityAudioCall;
+////        isVideoCall = intent.callCapability == INCallCapabilityVideoCall;
+//    } else {
+//        
+//    }
+    
+    isAudioCall = [userActivity.activityType isEqualToString:INStartAudioCallIntentIdentifier];
+    isVideoCall = [userActivity.activityType isEqualToString:INStartVideoCallIntentIdentifier];
 
     if (isAudioCall) {
         INStartAudioCallIntent *startAudioCallIntent = (INStartAudioCallIntent *)interaction.intent;
